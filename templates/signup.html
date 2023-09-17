@@ -1,0 +1,71 @@
+ {% load static %}
+ <!DOCTYPE html>
+<!-- Created By CodingNepal -->
+ <html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login</title>
+      <link rel="stylesheet" href="{% static 'register/style.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+    <div class="container">
+        <header>Registration</header>
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- USER NAME -->
+            <div class="input-field">
+                <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+                <label>Email or number</label>
+            </div>
+
+            <!-- Password1 -->
+            <div class="input-field">
+                <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" class="pswrd">
+                <span class="show" onclick="togglePassword('id_password1')">SHOW</span>
+                <label>Password</label>
+            </div>
+
+            <!-- Password2 -->            
+            <div class="input-field">
+                <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" class="pswrd">
+                <span class="show" onclick="togglePassword('id_password2')">SHOW</span>
+                <label>Password (again)</label>
+            </div>
+            <div class="button">
+                <div class="inner"></div>
+                <button type="submit">SIGN UP</button>
+            </div>
+        </form>
+
+        <!-- Facebook or Google -->
+        <div class="auth">
+            Or login with
+        </div>
+        <div class="links">
+            <div class="facebook">
+                <i class="fab fa-facebook-square"><span>Facebook</span></i>
+            </div>
+            <div class="google">
+                <i class="fab fa-google-plus-square"><span>Google</span></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        function togglePassword(inputId) {
+            var input = document.getElementById(inputId);
+            var show = input.nextElementSibling;
+            if (input.type === "password") {
+                input.type = "text";
+                show.style.color = "#1DA1F2";
+                show.textContent = "HIDE";
+            } else {
+                input.type = "password";
+                show.textContent = "SHOW";
+                show.style.color = "#111";
+            }
+        }
+    </script>
+   </body>
+</html>
